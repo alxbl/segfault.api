@@ -1,0 +1,19 @@
+{
+  "name": "segfault.api",
+  "version": "1.0.0",
+  "description": "API backend for segfault",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "segfault"
+  ],
+  "author": "Alexandre Beaulieu <alex@segfault.me>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
