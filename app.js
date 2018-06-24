@@ -34,5 +34,10 @@ if (app.get('env') === 'development') {
 
 app.use(passport.initialize());
 app.use('/auth', auth);
+
+app.use('/', (req, res) => {
+  res.send('WIP');
+});
+
 module.exports = app
 
