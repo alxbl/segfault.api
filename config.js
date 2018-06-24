@@ -14,7 +14,8 @@ if (process.env.NODE_ENV === "production") {
 
   };
 } else {
-  config = require(`./env/${process.env.NODE_ENV}`);
+  const env = process.env.NODE_ENV || "development";
+  config = require(`./env/${env}`);
 }
 
 module.exports = config;

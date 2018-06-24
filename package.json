@@ -4,7 +4,7 @@
   "description": "API backend for segfault",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development node ./bin/www"
+    "start": "node ./bin/www"
   },
   "keywords": [
     "REST",
