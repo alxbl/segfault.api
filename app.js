@@ -1,29 +1,38 @@
 const express = require('express')
 const helmet = require('helmet')
-
+const passport = require('passport')
 const auth = require('./router/auth');
-
 const app = express()
 
-// Gotta wear your helmet kids.
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'none'"], // API's don't load resources.
   }
-}))
+}));
 
 app.use(helmet.referrerPolicy({ policy: 'no-referrer' }))
-// app.use(helmet.expectCt({ enforce: true, maxAge: 100 });
+app.use(helmet.expectCt({ enforce: true, maxAge: 100 }));
 
-// Main router
-app.get('/', (req, res) => {
-  res.send('Hello');
-});
+if (app.get('env') === 'development') {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+} else {
+  app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: {}
+    });
+  });
+}
 
-app.get('/login', (req, res) => {
-  res.send('Hello');
-});
-
+app.use(passport.initialize());
 app.use('/auth', auth);
 module.exports = app
+
