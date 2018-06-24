@@ -14,7 +14,7 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'no-referrer' }))
 // app.use(helmet.expectCt({ enforce: true, maxAge: 100 }));
 
-if (app.get('env') === 'development') {
+if (app.get('env') === 'development' || process.env.NODE_DBEUG == 'true'){
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
