@@ -14,10 +14,10 @@ app.use(helmet.contentSecurityPolicy({
 app.use(helmet.referrerPolicy({ policy: 'no-referrer' }))
 // app.use(helmet.expectCt({ enforce: true, maxAge: 100 }));
 
-if (app.get('env') === 'development' || process.env.NODE_DBEUG == 'true'){
+if (app.get('env') === 'development' || process.env.NODE_DEBUG == 'true'){
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.send({
       message: err.message,
       error: err
     });
@@ -25,7 +25,7 @@ if (app.get('env') === 'development' || process.env.NODE_DBEUG == 'true'){
 } else {
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.send({
       message: err.message,
       error: {}
     });
@@ -36,8 +36,8 @@ app.get('/', (req, res) => {
   res.send('WIP');
 });
 
-app.use(passport.initialize());
-app.use('/auth', auth);
+// app.use(passport.initialize());
+// app.use('/auth', auth);
 
 module.exports = app
 
