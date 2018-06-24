@@ -32,12 +32,12 @@ if (app.get('env') === 'development' || process.env.NODE_DBEUG == 'true'){
   });
 }
 
-app.use(passport.initialize());
-app.use('/auth', auth);
-
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('WIP');
 });
+
+app.use(passport.initialize());
+app.use('/auth', auth);
 
 module.exports = app
 
