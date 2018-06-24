@@ -23,3 +23,5 @@ auth.get('/google', passport.authenticate('google', {
 auth.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => { res.redirect('/'); }
 );
+
+module.exports = auth;
