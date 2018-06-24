@@ -19,4 +19,4 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.listen(4433, () => console.log('Listening on 4433'));
+module.exports = app

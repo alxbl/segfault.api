@@ -2,8 +2,9 @@
   "name": "segfault.api",
   "version": "1.0.0",
   "description": "API backend for segfault",
-  "main": "index.js",
+  "private": true,
   "scripts": {
+    "start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
