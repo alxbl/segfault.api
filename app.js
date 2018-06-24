@@ -1,6 +1,8 @@
 const express = require('express')
 const helmet = require('helmet')
 
+const auth = require('./router/auth');
+
 const app = express()
 
 // Gotta wear your helmet kids.
@@ -19,4 +21,9 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
+app.get('/login', (req, res) => {
+  res.send('Hello');
+});
+
+app.use('/auth', auth);
 module.exports = app
